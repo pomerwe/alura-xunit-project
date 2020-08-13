@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "3DwlauMQYdW5hHasWs5LOvDi3xk2DSYMF6F1nRnUL8i6F37w08LgFKpkf9JTSe/KoRxvNTcCPtGi8dZKfWFSDA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\estev\\Desktop\\Teste .netCore\\xUnit-Teste-\\Alura.LeilaoOnline\\Alura.LeilaoOnline.Core\\Alura.LeilaoOnline.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\estev\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\estev\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

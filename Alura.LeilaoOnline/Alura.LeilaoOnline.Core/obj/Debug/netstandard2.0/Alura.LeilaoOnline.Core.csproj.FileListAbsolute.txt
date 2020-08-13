@@ -1,0 +1,9 @@
+C:\Users\estev\Desktop\Teste .netCore\xUnit-Teste-\Alura.LeilaoOnline\Alura.LeilaoOnline.Core\bin\Debug\netstandard2.0\Alura.LeilaoOnline.Core.deps.json
+C:\Users\estev\Desktop\Teste .netCore\xUnit-Teste-\Alura.LeilaoOnline\Alura.LeilaoOnline.Core\bin\Debug\netstandard2.0\Alura.LeilaoOnline.Core.dll
+C:\Users\estev\Desktop\Teste .netCore\xUnit-Teste-\Alura.LeilaoOnline\Alura.LeilaoOnline.Core\bin\Debug\netstandard2.0\Alura.LeilaoOnline.Core.pdb
+C:\Users\estev\Desktop\Teste .netCore\xUnit-Teste-\Alura.LeilaoOnline\Alura.LeilaoOnline.Core\obj\Debug\netstandard2.0\Alura.LeilaoOnline.Core.csprojAssemblyReference.cache
+C:\Users\estev\Desktop\Teste .netCore\xUnit-Teste-\Alura.LeilaoOnline\Alura.LeilaoOnline.Core\obj\Debug\netstandard2.0\Alura.LeilaoOnline.Core.AssemblyInfoInputs.cache
+C:\Users\estev\Desktop\Teste .netCore\xUnit-Teste-\Alura.LeilaoOnline\Alura.LeilaoOnline.Core\obj\Debug\netstandard2.0\Alura.LeilaoOnline.Core.AssemblyInfo.cs
+C:\Users\estev\Desktop\Teste .netCore\xUnit-Teste-\Alura.LeilaoOnline\Alura.LeilaoOnline.Core\obj\Debug\netstandard2.0\Alura.LeilaoOnline.Core.csproj.CoreCompileInputs.cache
+C:\Users\estev\Desktop\Teste .netCore\xUnit-Teste-\Alura.LeilaoOnline\Alura.LeilaoOnline.Core\obj\Debug\netstandard2.0\Alura.LeilaoOnline.Core.dll
+C:\Users\estev\Desktop\Teste .netCore\xUnit-Teste-\Alura.LeilaoOnline\Alura.LeilaoOnline.Core\obj\Debug\netstandard2.0\Alura.LeilaoOnline.Core.pdb
