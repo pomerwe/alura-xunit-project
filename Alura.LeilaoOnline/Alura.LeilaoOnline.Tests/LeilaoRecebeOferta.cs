@@ -16,6 +16,7 @@ namespace Alura.LeilaoOnline.Tests
             var leilao = new Leilao("Excalibur");
             var sonic = new Interessada("Sonic", leilao);
 
+            leilao.IniciaPregao();
             foreach (float o in ofertas)
             {
                 leilao.RecebeLance(sonic, o);

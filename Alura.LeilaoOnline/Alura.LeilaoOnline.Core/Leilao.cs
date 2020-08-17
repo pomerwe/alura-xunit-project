@@ -16,7 +16,7 @@ namespace Alura.LeilaoOnline.Core
             Peca = peca;
             _lances = new List<Lance>();
 
-            EstadoLeilao = EstadoLeilao.EmAndamento;
+            EstadoLeilao = EstadoLeilao.Iniciado;
         }
 
         public void RecebeLance(Interessada cliente, double valor)
@@ -25,11 +25,16 @@ namespace Alura.LeilaoOnline.Core
             {
                 _lances.Add(new Lance(cliente, valor));
             }
+            else
+            {
+                throw new LeilaoException("Pregão não foi iniciado, impossível receber lances!");
+            }
+            
         }
 
         public void IniciaPregao()
         {
-
+            EstadoLeilao = EstadoLeilao.EmAndamento;
         }
 
         public void TerminaPregao()
