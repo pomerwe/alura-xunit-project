@@ -1,4 +1,5 @@
 ﻿using Alura.LeilaoOnline.Core;
+using Alura.LeilaoOnline.Core.Exceptions.Leilao;
 using System;
 using System.Linq;
 using Xunit;
@@ -7,10 +8,10 @@ namespace Alura.LeilaoOnline.Tests
     public class LeilaoRecebeOferta
     {
         [Theory]
-        [InlineData(990, new float[] { 800, 900, 100, 990 })]
-        [InlineData(1990, new float[] { 800, 900, 1000, 1990 })]
-        [InlineData(800, new float[] { 800 })]
-        public void NãoPermiteNovosLancesDadoLeilaoFinalizado(float qtDeLancesEsperado, float[] ofertas)
+        [InlineData(new float[] { 800, 900, 100, 990 })]
+        [InlineData(new float[] { 800, 900, 1000, 1990 })]
+        [InlineData(new float[] { 800 })]
+        public void NãoPermiteNovosLancesDadoLeilaoFinalizado(float[] ofertas)
         {
             //Arrange - cenário do teste
             var leilao = new Leilao("Excalibur");
@@ -24,12 +25,19 @@ namespace Alura.LeilaoOnline.Tests
 
             leilao.TerminaPregao();
 
-            leilao.RecebeLance(sonic, 99999);
 
-            //Assert - Teste do resultado
-            var qtDeLancesObtido = leilao.Lances.Count();
+            Exception exception = null;
 
-            Assert.Equal(qtDeLancesEsperado, qtDeLancesObtido);
+            try
+            {
+                leilao.RecebeLance(sonic, 99999);
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+            }
+
+            Assert.True(exception != null && exception.GetType() == typeof(LeilaoException));
         }
     }
 }

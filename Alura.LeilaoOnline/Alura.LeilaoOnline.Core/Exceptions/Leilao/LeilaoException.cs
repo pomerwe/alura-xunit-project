@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Alura.LeilaoOnline.Core
+namespace Alura.LeilaoOnline.Core.Exceptions.Leilao
 {
     [Serializable]
-    internal class LeilaoException : Exception
+    public class LeilaoException : Exception
     {
         string Descricao { get; set; }
         public LeilaoException(string message) : base(message)

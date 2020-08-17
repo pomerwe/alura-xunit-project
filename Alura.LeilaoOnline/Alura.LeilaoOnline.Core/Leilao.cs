@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Alura.LeilaoOnline.Core.Exceptions.Leilao;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Alura.LeilaoOnline.Core
@@ -27,9 +28,13 @@ namespace Alura.LeilaoOnline.Core
             }
             else
             {
-                throw new LeilaoException("Pregão não foi iniciado, impossível receber lances!");
+                throw GetLeilaoExceptionParaRecebeLance();
             }
-            
+        }
+
+        public LeilaoException GetLeilaoExceptionParaRecebeLance()
+        {
+            return new LeilaoExceptionFactoryImpl().CriarLeilaoExceptionParaRecebeLance(EstadoLeilao);
         }
 
         public void IniciaPregao()
