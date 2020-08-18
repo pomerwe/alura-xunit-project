@@ -35,19 +35,7 @@ namespace Alura.LeilaoOnline.Tests
 
             leilao.TerminaPregao();
 
-
-            LeilaoException leilaoException = null;
-
-            try
-            {
-                leilao.RecebeLance(sonic, 99999);
-            }
-            catch (LeilaoException ex)
-            {
-                leilaoException = ex;
-            }
-
-            Assert.True(leilaoException != null && leilaoException.GetType() == typeof(LeilaoException));
+            Assert.Throws<LeilaoException>(() => leilao.RecebeLance(sonic, 999999));
         }
 
         [Fact]
@@ -60,19 +48,7 @@ namespace Alura.LeilaoOnline.Tests
             leilao.IniciaPregao();
             leilao.RecebeLance(sonic, 1212);
 
-            LeilaoException leilaoException = null;
-
-            try
-            {
-                leilao.RecebeLance(sonic, 1212);
-            }
-            catch (LeilaoException ex)
-            {
-                leilaoException = ex;
-            }
-
-
-            Assert.True(leilaoException != null && leilaoException.GetType() == typeof(LeilaoException));
+            Assert.Throws<LeilaoException>(() => leilao.RecebeLance(sonic, 1212));
         }
     }
 }

@@ -31,5 +31,22 @@ namespace Alura.LeilaoOnline.Core.Exceptions.Leilao
         {
             return new LeilaoException(mensagem);
         }
+
+        public LeilaoException CriarLeilaoExceptionParaTerminaPregao(EstadoLeilao estadoLeilao)
+        {
+            switch (estadoLeilao)
+            {
+                case EstadoLeilao.Iniciado:
+                    {
+                        return new LeilaoException("Pregão ainda não foi iniciado!");
+                    }
+                case EstadoLeilao.Finalizado:
+                    {
+                        return new LeilaoException("Pregão já finalizado!");
+                    }
+                default:
+                    throw new LeilaoException("Estado de leilão não existente!");
+            }
+        }
     }
 }

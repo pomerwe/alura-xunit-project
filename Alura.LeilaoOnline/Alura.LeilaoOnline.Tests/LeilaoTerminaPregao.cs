@@ -52,6 +52,8 @@ namespace Alura.LeilaoOnline.Tests
             //Arrange - 
             //Leilão com 3 pessoas realizando lances
             var leilao = new Leilao("Excalibur");
+            leilao.IniciaPregao();
+
             //Act - método em teste 
             //Quando o leilão termina
             leilao.TerminaPregao();
