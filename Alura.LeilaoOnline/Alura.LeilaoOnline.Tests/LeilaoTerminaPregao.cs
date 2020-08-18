@@ -17,12 +17,22 @@ namespace Alura.LeilaoOnline.Tests
         {
             //Arrange - cenário do teste
             var leilao = new Leilao("Excalibur");
+
             var sonic = new Interessada("Sonic", leilao);
+            var arthur = new Interessada("Arthur", leilao);
 
             leilao.IniciaPregao();
-            foreach(float o in ofertas)
+            for (int i = 0; i < ofertas.Length; i++)
             {
-                leilao.RecebeLance(sonic, o);
+                var o = ofertas[i];
+                if(i % 2 == 0)
+                {
+                    leilao.RecebeLance(sonic, o);
+                }
+                else
+                {
+                    leilao.RecebeLance(arthur, o);
+                }
             };
 
 

@@ -22,19 +22,34 @@ namespace Alura.LeilaoOnline.Core
 
         public void RecebeLance(Interessada cliente, double valor)
         {
-            if(EstadoLeilao == EstadoLeilao.EmAndamento)
+            Lance lance = new Lance(cliente, valor);
+            ChecarSeLancePodeSerAdicionado(lance);
+            _lances.Add(lance);
+        }
+
+        public void ChecarSeLancePodeSerAdicionado(Lance lance)
+        {
+            bool leilaoNaoPermiteAceitarLances = EstadoLeilao != EstadoLeilao.EmAndamento;
+
+            bool eOClienteDoUltimoLance = Lances
+                                            .DefaultIfEmpty(new Lance(null,0))
+                                            .LastOrDefault()
+                                            .Cliente == lance.Cliente;
+
+            if(leilaoNaoPermiteAceitarLances)
             {
-                _lances.Add(new Lance(cliente, valor));
+                throw GetLeilaoExceptionFactory().CriarLeilaoExceptionParaRecebeLance(EstadoLeilao);
             }
-            else
+
+            if(eOClienteDoUltimoLance)
             {
-                throw GetLeilaoExceptionParaRecebeLance();
+                throw GetLeilaoExceptionFactory().CriarLeilaoException("Cliente deu o último lance! Ação negada!");
             }
         }
 
-        public LeilaoException GetLeilaoExceptionParaRecebeLance()
+        public LeilaoExceptionFactoryImpl GetLeilaoExceptionFactory()
         {
-            return new LeilaoExceptionFactoryImpl().CriarLeilaoExceptionParaRecebeLance(EstadoLeilao);
+            return new LeilaoExceptionFactoryImpl();
         }
 
         public void IniciaPregao()

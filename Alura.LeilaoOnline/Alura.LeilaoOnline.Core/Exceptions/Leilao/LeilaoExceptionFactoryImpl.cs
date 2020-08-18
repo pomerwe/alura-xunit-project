@@ -26,5 +26,10 @@ namespace Alura.LeilaoOnline.Core.Exceptions.Leilao
                     throw new LeilaoException("Estado de leilão não existente!");
             }
         }
+
+        public LeilaoException CriarLeilaoException(string mensagem)
+        {
+            return new LeilaoException(mensagem);
+        }
     }
 }
