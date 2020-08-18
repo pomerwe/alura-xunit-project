@@ -1,5 +1,6 @@
 ﻿using Alura.LeilaoOnline.Core;
 using Alura.LeilaoOnline.Core.Exceptions.Leilao;
+using Alura.LeilaoOnline.Core.LeilaoModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Alura.LeilaoOnline.Tests
         [InlineData(new float[] { 800 })]
         public void NãoPermiteNovosLancesDadoLeilaoFinalizado(float[] ofertas)
         {
-            var leilao = new Leilao("Excalibur");
+            var leilao = new LeilaoMaiorValor("Excalibur");
             //Arrange - cenário do teste
             var sonic = new Interessada("Sonic", leilao);
             var arthur = new Interessada("Arthur", leilao);
@@ -42,7 +43,7 @@ namespace Alura.LeilaoOnline.Tests
         public void NaoAceitaLanceDadoUltimoLanceSerDoMesmoCliente()
         {
             //Arrange - cenário do teste
-            var leilao = new Leilao("Excalibur");
+            var leilao = new LeilaoMaiorValor("Excalibur");
             var sonic = new Interessada("Sonic", leilao);
 
             leilao.IniciaPregao();

@@ -1,4 +1,6 @@
-﻿namespace Alura.LeilaoOnline.Core
+﻿using Alura.LeilaoOnline.Core.LeilaoModel;
+
+namespace Alura.LeilaoOnline.Core
 {
     public class Interessada
     {

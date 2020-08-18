@@ -1,22 +1,24 @@
 ﻿using Alura.LeilaoOnline.Core.Exceptions.Leilao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Alura.LeilaoOnline.Core
-{
-    public class Leilao
+namespace Alura.LeilaoOnline.Core.LeilaoModel
+{ 
+    public abstract class Leilao
     {
         private IList<Lance> _lances;
         public IEnumerable<Lance> Lances => _lances;
-        public string Peca { get; }
-        public Lance Ganhador { get; private set; }
-        public EstadoLeilao EstadoLeilao { get; private set; }
+        public string Peca { get; set; }
+        public Lance Ganhador { get; set; }
+        public EstadoLeilao EstadoLeilao { get; set; }
+        public LeilaoModalidade LeilaoModalidade { get; set; }
+        public double ValorAlvo { get; set; }
 
         public Leilao(string peca)
         {
             Peca = peca;
             _lances = new List<Lance>();
-
             EstadoLeilao = EstadoLeilao.Iniciado;
         }
 
@@ -59,17 +61,19 @@ namespace Alura.LeilaoOnline.Core
 
         public void TerminaPregao()
         {
+            VerificaSePodeTerminarPregao();
+            DefinirGanhador();
+            EstadoLeilao = EstadoLeilao.Finalizado;
+        }
+
+        public abstract void DefinirGanhador();
+
+        public void VerificaSePodeTerminarPregao()
+        {
             if (EstadoLeilao != EstadoLeilao.EmAndamento)
             {
                 throw GetLeilaoExceptionFactory().CriarLeilaoExceptionParaTerminaPregao(EstadoLeilao);
             }
-
-            Ganhador = Lances
-                        .DefaultIfEmpty(new Lance(null, 0))
-                        .OrderBy(l => l.Valor)
-                        .LastOrDefault();
-
-            EstadoLeilao = EstadoLeilao.Finalizado;
         }
     }
 }
