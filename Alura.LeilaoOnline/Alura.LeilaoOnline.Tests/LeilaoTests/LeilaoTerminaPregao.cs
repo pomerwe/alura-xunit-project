@@ -17,7 +17,8 @@ namespace Alura.LeilaoOnline.Tests
         public void RetornaMaiorValorDadoLeilaoComPeloMenosUmLance(float valorEsperado, float[] ofertas)
         {
             //Arrange - cenário do teste
-            var leilao = new LeilaoMaiorValor("Excalibur");
+            var modalidade = new MaiorValor();
+            var leilao = new Leilao("Excalibur", modalidade);
 
             var sonic = new Interessada("Sonic", leilao);
             var arthur = new Interessada("Arthur", leilao);
@@ -52,7 +53,8 @@ namespace Alura.LeilaoOnline.Tests
         {
             //Arrange - 
             //Leilão com 3 pessoas realizando lances
-            var leilao = new LeilaoMaiorValor("Excalibur");
+            var modalidade = new MaiorValor();
+            var leilao = new Leilao("Excalibur" , modalidade);
             leilao.IniciaPregao();
 
             //Act - método em teste 
@@ -77,7 +79,8 @@ namespace Alura.LeilaoOnline.Tests
         public void RetornaValorMaisProximoDadoLeilaoComValorAlvo(float valorEsperado, double valorAlvo, float[] ofertas)
         {
             //Arrange - cenário do teste
-            var leilao = new LeilaoComValorAlvo("Excalibur", valorAlvo);
+            var modalidade = new ComValorAlvo(valorAlvo);
+            var leilao = new Leilao("Excalibur", modalidade);
 
             var sonic = new Interessada("Sonic", leilao);
             var arthur = new Interessada("Arthur", leilao);

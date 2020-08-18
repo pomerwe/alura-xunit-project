@@ -15,7 +15,8 @@ namespace Alura.LeilaoOnline.Tests
         [InlineData(new float[] { 800 })]
         public void NãoPermiteNovosLancesDadoLeilaoFinalizado(float[] ofertas)
         {
-            var leilao = new LeilaoMaiorValor("Excalibur");
+            var modalidade = new MaiorValor();
+            var leilao = new Leilao("Excalibur", modalidade);
             //Arrange - cenário do teste
             var sonic = new Interessada("Sonic", leilao);
             var arthur = new Interessada("Arthur", leilao);
@@ -43,7 +44,8 @@ namespace Alura.LeilaoOnline.Tests
         public void NaoAceitaLanceDadoUltimoLanceSerDoMesmoCliente()
         {
             //Arrange - cenário do teste
-            var leilao = new LeilaoMaiorValor("Excalibur");
+            var modalidade = new MaiorValor();
+            var leilao = new Leilao("Excalibur", modalidade);
             var sonic = new Interessada("Sonic", leilao);
 
             leilao.IniciaPregao();

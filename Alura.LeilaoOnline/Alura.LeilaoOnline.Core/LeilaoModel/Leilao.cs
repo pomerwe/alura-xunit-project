@@ -5,21 +5,22 @@ using System.Linq;
 
 namespace Alura.LeilaoOnline.Core.LeilaoModel
 { 
-    public abstract class Leilao
+    public class Leilao
     {
         private IList<Lance> _lances;
         public IEnumerable<Lance> Lances => _lances;
         public string Peca { get; set; }
         public Lance Ganhador { get; set; }
         public EstadoLeilao EstadoLeilao { get; set; }
-        public LeilaoModalidade LeilaoModalidade { get; set; }
+        public IModalidadeAvaliador _avaliador { get; set; }
         public double ValorAlvo { get; set; }
 
-        public Leilao(string peca)
+        public Leilao(string peca, IModalidadeAvaliador _avaliador)
         {
             Peca = peca;
             _lances = new List<Lance>();
             EstadoLeilao = EstadoLeilao.Iniciado;
+            this._avaliador = _avaliador;
         }
 
         public void RecebeLance(Interessada cliente, double valor)
@@ -66,7 +67,10 @@ namespace Alura.LeilaoOnline.Core.LeilaoModel
             EstadoLeilao = EstadoLeilao.Finalizado;
         }
 
-        public abstract void DefinirGanhador();
+        public void DefinirGanhador()
+        {
+            Ganhador = _avaliador.ObterGanhadorDoLeilao(this);
+        }
 
         public void VerificaSePodeTerminarPregao()
         {

@@ -5,27 +5,28 @@ using System.Text;
 
 namespace Alura.LeilaoOnline.Core.LeilaoModel
 {
-    public class LeilaoComValorAlvo : Leilao
+    public class ComValorAlvo : IModalidadeAvaliador
     {
+        LeilaoModalidade LeilaoModalidade = LeilaoModalidade.ComValorAlvo;
+        double ValorAlvo { get; set; }
 
-        public LeilaoComValorAlvo(string peca, double valorAlvo) : base(peca)
+        public ComValorAlvo(double valorAlvo)
         {
             ValorAlvo = valorAlvo;
-            LeilaoModalidade = LeilaoModalidade.ComValorAlvo;
         }
 
-        public override void DefinirGanhador()
+        public Lance ObterGanhadorDoLeilao(Leilao leilao)
         {
-            Ganhador = new Lance(null, 0);
+            Lance lanceGanhador = new Lance(null, 0);
 
             double moduloDoValorAlvoMenosOValorDoLance = 0;
-            List<Lance> lancesList = Lances.ToList();
+            List<Lance> lancesList = leilao.Lances.ToList();
             for (int i = 0; i < lancesList.Count; i++)
             {
                 var l = lancesList[i];
                 if (i == 0)
                 {
-                    Ganhador = l;
+                    lanceGanhador = l;
                     moduloDoValorAlvoMenosOValorDoLance = Math.Abs(ValorAlvo - l.Valor);
                 }
                 else
@@ -33,11 +34,13 @@ namespace Alura.LeilaoOnline.Core.LeilaoModel
                     double novoModuloAlvoMenosValor = Math.Abs(ValorAlvo - l.Valor);
                     if (moduloDoValorAlvoMenosOValorDoLance > novoModuloAlvoMenosValor)
                     {
-                        Ganhador = l;
+                        lanceGanhador = l;
                         moduloDoValorAlvoMenosOValorDoLance = novoModuloAlvoMenosValor;
                     }
                 }
             }
+
+            return lanceGanhador;
         }
     }
 }
